@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f4f7fb;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 60px;
+  background: #fff;
+}
+
+.nav-left a {
+  margin-right: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.nav-right {
+  font-weight: bold;
+}
+
+/* HERO */
+.hero {
+  background: url("https://images.unsplash.com/photo-1588776814546-1ffcf47267a5") center/cover;
+  padding: 60px;
+  min-height: 90vh;
+}
+
+.hero h1 {
+  color: #2d3748;
+  margin-bottom: 30px;
+}
+
+/* STEPS */
+.steps {
+  display: flex;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  width: fit-content;
+  margin-bottom: 40px;
+}
+
+.step {
+  padding: 15px 25px;
+  border-right: 1px solid #eee;
+  color: #555;
+}
+
+.step.active {
+  background: #dff3ff;
+  font-weight: bold;
+}
+
+/* CARDS */
+.cards {
+  display: flex;
+  gap: 30px;
+}
+
+.card {
+  background: #dff3ff;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  width: 220px;
+}
+
+.card img {
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.line {
+  height: 10px;
+  width: 80px;
+  background: #4a5568;
+  border-radius: 5px;
+  margin: 15px auto;
+}
+
+/* BUTTONS */
+.btn {
+  background: #00aaff;
+  border: none;
+  padding: 10px 25px;
+  color: #fff;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.btn.secondary {
+  background: #fff;
+  color: #333;
+}
