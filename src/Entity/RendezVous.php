@@ -16,11 +16,11 @@ class RendezVous
     #[ORM\Column(length: 20, unique: true)]
     private ?string $reference = null;
 
-    #[ORM\ManyToOne(targetEntity: Patient::class, inversedBy: 'rendezvous')]
+    #[ORM\ManyToOne(targetEntity: Patient::class, inversedBy: 'rendezVous')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Patient $patient = null;
 
-    #[ORM\ManyToOne(targetEntity: Medecin::class, inversedBy: 'rendezvous')]
+    #[ORM\ManyToOne(targetEntity: Medecin::class, inversedBy: 'rendezVous')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Medecin $medecin = null;
 

@@ -28,6 +28,10 @@ class Customer
     #[ORM\Column(length: 10)]
     private ?string $postal_code = null;
 
+    #[ORM\OneToOne(inversedBy: 'customer', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Patient $patient = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,6 +93,18 @@ class Customer
     public function setPostalCode(string $postal_code): static
     {
         $this->postal_code = $postal_code;
+
+        return $this;
+    }
+
+    public function getPatient(): ?Patient
+    {
+        return $this->patient;
+    }
+
+    public function setPatient(Patient $patient): static
+    {
+        $this->patient = $patient;
 
         return $this;
     }

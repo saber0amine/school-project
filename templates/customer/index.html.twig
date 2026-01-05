@@ -1,44 +1,197 @@
-<link rel="stylesheet" href="{{ asset('styles/app.css') }}">
-<header class="navbar">
-  <div class="nav-left">
-    <a href="{{ path('app_home') }}">Home</a>
-    <a href="{{ path('app_customer') }}">Reviews</a>
-    <a href="{{ path('listcustomers') }}">Gallery</a>
-  </div>
-  <div class="nav-right">Medic</div>
+{% extends 'base.html.twig' %}
+
+{% block title %}Medibook - Prenez rendez-vous{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+{% endblock %}
+
+{% block body %}
+<!-- Header avec navigation -->
+<header>
+    <div class="container header-container">
+        <div class="logo">
+            <i class="fas fa-stethoscope"></i>
+            <span>Medibook</span>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav class="nav-menu" id="navMenu">
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#apropos">À propos</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="/rendezvous.php">Prendre rendez-vous</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
 
-<section class="hero">
-  <h1>Medical Booking Website</h1>
-
-  <div class="steps">
-    <div class="step">Location</div>
-    <div class="step">Category</div>
-    <div class="step active">Service</div>
-    <div class="step">Provider</div>
-    <div class="step">Time</div>
-    <div class="step">Client</div>
-  </div>
-
-  <div class="cards">
-    <div class="card">
-      <img src="https://via.placeholder.com/100" alt="">
-      <div class="line"></div>
-      <button class="btn">Select</button>
+<!-- Section Hero -->
+<section class="hero" id="accueil">
+    <div class="container">
+        <h1>Votre santé, notre priorité</h1>
+        <p>Prenez rendez-vous facilement avec les meilleurs professionnels de santé. Medibook simplifie la prise de rendez-vous médicaux en ligne, 24h/24 et 7j/7.</p>
+        <a href="#rendezvous" class="btn btn-primary btn-large">Prendre un rendez-vous</a>
     </div>
-
-    <div class="card">
-      <img src="https://via.placeholder.com/100" alt="">
-      <div class="line"></div>
-      <button class="btn secondary">Select</button>
-    </div>
-
-    <div class="card">
-      <img src="https://via.placeholder.com/100" alt="">
-      <div class="line"></div>
-      <button class="btn">Select</button>
-    </div>
-  </div>
 </section>
 
+<!-- Section À propos -->
+<section class="about-section" id="apropos">
+    <div class="container">
+        <h2 class="section-title">À propos de Medibook</h2>
+        <div class="about-container">
+            <div class="about-content">
+                <h2>Notre mission : faciliter l'accès aux soins</h2>
+                <p>Medibook a été créé en 2026 avec une vision simple : rendre la prise de rendez-vous médicaux plus simple, plus rapide et plus accessible pour tous.</p>
+                <p>Nous croyons que la technologie doit servir à améliorer l'expérience des patients et faciliter le travail des professionnels de santé.</p>
+                <p>Notre plateforme connecte patients et médecins en quelques clics, éliminant les temps d'attente au téléphone et simplifiant la gestion des agendas médicaux.</p>
+                <p>Engagés pour la santé de tous, nous travaillons chaque jour à améliorer nos services et à étendre notre réseau de professionnels de santé.</p>
+                <a href="#contact" class="btn btn-secondary" style="margin-top: 20px;">Nous contacter</a>
+            </div>
+            <div class="about-features">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div>
+                        <h3>Santé accessible</h3>
+                        <p>Nous rendons l'accès aux soins plus simple pour tous, quel que soit l'âge ou la situation.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div>
+                        <h3>Confidentialité garantie</h3>
+                        <p>Vos données médicales sont protégées et sécurisées conformément au RGPD.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        <h3>Gain de temps</h3>
+                        <p>Plus besoin d'attendre au téléphone, prenez rendez-vous en ligne à tout moment.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <div>
+                        <h3>Réseau de professionnels</h3>
+                        <p>Accédez à un large réseau de médecins qualifiés et expérimentés.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
+<!-- Section Contact -->
+<section class="contact-section" id="contact">
+    <div class="container">
+        <h2 class="section-title">Contactez-nous</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Nous sommes à votre écoute</h2>
+                <p>Vous avez des questions sur nos services, besoin d'assistance pour prendre un rendez-vous, ou vous souhaitez rejoindre notre réseau de médecins partenaires ? N'hésitez pas à nous contacter.</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Adresse</h4>
+                            <p>Clinique Ain Borja , 20250 Casablance, Maroc</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Téléphone</h4>
+                            <p>+212 522 345 678</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>contact@medibook.fr</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Horaires d'ouverture</h4>
+                            <p>Lundi - Vendredi : 8h00 - 20h00</p>
+                            <p>Samedi : 9h00 - 18h00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-container">
+            <div class="footer-column">
+                <div class="logo" style="color: white; margin-bottom: 20px;">
+                    <i class="fas fa-stethoscope"></i>
+                    <span>Medibook</span>
+                </div>
+                <p>Medibook simplifie la prise de rendez-vous médicaux en ligne, pour un accès aux soins plus rapide et plus efficace.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Liens rapides</h3>
+                <ul class="footer-links">
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#rendezvous">Prendre rendez-vous</a></li>
+                    <li><a href="#apropos">À propos</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Médecins généralistes</a></li>
+                    <li><a href="#">Spécialistes</a></li>
+                    <li><a href="#">Dentistes</a></li>
+                    <li><a href="#">Médecins à domicile</a></li>
+                    <li><a href="#">Téléconsultation</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Informations légales</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Politique de confidentialité</a></li>
+                    <li><a href="#">Conditions d'utilisation</a></li>
+                    <li><a href="#">Mentions légales</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}

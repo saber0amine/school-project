@@ -3,7 +3,10 @@
 namespace App\Entity;
 
 use App\Repository\MedecinRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\RendezVous;
 
 #[ORM\Entity(repositoryClass: MedecinRepository::class)]
 class Medecin
@@ -66,6 +69,22 @@ class Medecin
 
     #[ORM\Column(length: 20, nullable: true)]
     private ?string $gender = null;
+
+    #[ORM\ManyToOne(inversedBy: 'medecins')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Specialite $specialite = null;
+
+    #[ORM\OneToMany(mappedBy: 'medecin', targetEntity: RendezVous::class)]
+    private Collection $rendezVous;
+
+    #[ORM\ManyToOne(inversedBy: 'medecin')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Hospital $hospital = null;
+
+    public function __construct()
+    {
+        $this->rendezVous = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -272,6 +291,37 @@ class Medecin
     public function setGender(?string $gender): self
     {
         $this->gender = $gender;
+        return $this;
+    }
+
+    public function getSpecialite(): ?Specialite
+    {
+        return $this->specialite;
+    }
+
+    public function setSpecialite(?Specialite $specialite): static
+    {
+        $this->specialite = $specialite;
+
+        return $this;
+    }
+    /**
+     * @return Collection<int, RendezVous>
+     */
+    public function getRendezVous(): Collection
+    {
+        return $this->rendezVous;
+    }
+
+    public function getHospital(): ?Hospital
+    {
+        return $this->hospital;
+    }
+
+    public function setHospital(?Hospital $hospital): static
+    {
+        $this->hospital = $hospital;
+
         return $this;
     }
 }

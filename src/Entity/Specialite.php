@@ -24,6 +24,11 @@ class Specialite
     #[ORM\OneToMany(mappedBy: 'specialite', targetEntity: Medecin::class)]
     private Collection $medecins;
 
+    /**
+     * @var Collection<int, Medecin>
+     */
+    
+
     public function __construct()
     {
         $this->medecins = new ArrayCollection();

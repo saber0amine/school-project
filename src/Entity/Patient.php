@@ -4,6 +4,9 @@ namespace App\Entity;
 
 use App\Repository\PatientRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use App\Entity\RendezVous;
 
 #[ORM\Entity(repositoryClass: PatientRepository::class)]
 class Patient
@@ -49,9 +52,16 @@ class Patient
     #[ORM\Column(type: 'datetime', options: ['default' => 'CURRENT_TIMESTAMP'])]
     private ?\DateTimeInterface $registration_date = null;
 
+    #[ORM\OneToMany(mappedBy: 'patient', targetEntity: RendezVous::class)]
+    private Collection $rendezVous;
+
+    #[ORM\OneToOne(mappedBy: 'patient', cascade: ['persist', 'remove'])]
+    private ?Customer $customer = null;
+
     public function __construct()
     {
         $this->registration_date = new \DateTime();
+        $this->rendezVous = new ArrayCollection();
     }
 
     // Getters and Setters (seulement les essentiels)
@@ -205,6 +215,23 @@ class Patient
     public function setRegistrationDate(\DateTimeInterface $registration_date): self
     {
         $this->registration_date = $registration_date;
+        return $this;
+    }
+
+    public function getCustomer(): ?Customer
+    {
+        return $this->customer;
+    }
+
+    public function setCustomer(Customer $customer): static
+    {
+        // set the owning side of the relation if necessary
+        if ($customer->getPatient() !== $this) {
+            $customer->setPatient($this);
+        }
+
+        $this->customer = $customer;
+
         return $this;
     }
 }
