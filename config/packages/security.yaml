@@ -31,12 +31,11 @@ security:
     # ✅ OBLIGATOIREMENT sous "security"
     access_control:
         # Pages publiques
-        - { path: ^/login, roles: PUBLIC_ACCESS }
+        - { path: ^/login, roles: PUBLIC_ACCESS } 
+        - { path: ^/customer, roles: PUBLIC_ACCESS }
+        - { path: ^/patient, roles: PUBLIC_ACCESS }
+        - { path: ^/rendez, roles: PUBLIC_ACCESS }
 
-        # Pages protégées utilisateur
-        - { path: ^/customer, roles: ROLE_USER }
-        - { path: ^/patient, roles: ROLE_USER }
-        - { path: ^/rendez, roles: ROLE_USER }
 
         # Pages admin
         - { path: ^/admin, roles: ROLE_ADMIN }

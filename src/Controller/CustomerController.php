@@ -23,9 +23,5 @@ final class CustomerController extends AbstractController
     }
 
     // src/Controller/RendezvousController.php
-#[Route('/rendezvous', name: 'app_rendezvous')]
-public function rendezvous(): Response
-{
-    return $this->render('customer/rendezvous.php');
-}
+
 }
