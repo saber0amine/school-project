@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Api;
+namespace App\Controller\API;
 
 use App\Entity\Medecin;
 use App\Repository\MedecinRepository;
@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class MedecinApiController extends AbstractController
+class MedecinApi extends AbstractController
 {
     #[Route('/api/medecins', methods: ['GET'])]
     public function index(MedecinRepository $repo): JsonResponse

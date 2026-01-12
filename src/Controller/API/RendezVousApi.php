@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Api;
+namespace App\Controller\API;
 
 use App\Entity\RendezVous;
 use App\Repository\RendezVousRepository;
@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class RendezVousApiController extends AbstractController
+class RendezVousApi extends AbstractController
 {
     #[Route('/api/rdv', methods: ['GET'])]
     public function index(RendezVousRepository $repo): JsonResponse
@@ -33,7 +33,6 @@ class RendezVousApiController extends AbstractController
         $medecin = $medRepo->find($data['medecin_id']);
         $patient = $patRepo->find($data['patient_id']);
 
-        // ❗ BUSINESS RULE (EXAM GOLD)
         $existing = $rdvRepo->findOneBy([
             'medecin' => $medecin,
             'date' => new \DateTime($data['date']),

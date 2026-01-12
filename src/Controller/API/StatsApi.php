@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Controller\Api;
+namespace App\Controller\API;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
-class StatsApiController extends AbstractController
+class StatsApi extends AbstractController
 {
     #[Route('/api/stats', methods: ['GET'])]
     public function stats(EntityManagerInterface $em): JsonResponse
